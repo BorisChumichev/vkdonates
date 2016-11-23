@@ -1,0 +1,9 @@
+html
+    head
+        title Тайтл
+    body
+        #app
+        if app.get('env') == 'production'
+            script(src=`/public/dist${app.get('assets').main.js}`)
+        if app.get('env') == 'development'
+            script(src='//localhost:3031/index.js')
