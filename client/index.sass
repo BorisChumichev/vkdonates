@@ -1,9 +1,20 @@
 $primary-font: 'PT Sans', sans-serif
 $secondary-font: 'PT Serif', serif
 $primary-color: #00386C
-$secondary-color: #49B882
+$secondary-color: #2a5885
+
 
 body
   font-family: $primary-font
   margin: 0
-  -webkit-font-smoothing: antialiased
+  font-family: -apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif
+  line-height: 1.154
+  font-weight: 400
+  -webkit-font-smoothing: subpixel-antialiased
+  padding: 25px 30px 30px
+
+@mixin textlink ()
+  color: $secondary-color
+  text-decoration: none
+  cursor: pointer
+
