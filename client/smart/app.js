@@ -7,6 +7,7 @@ import Button from 'dumb/button'
 import ButtonNest from 'dumb/button-nest'
 import Stat from 'dumb/stat'
 import StatsRow from 'dumb/stats-row'
+import TabsControl from 'dumb/tabs-control'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -40,6 +41,11 @@ class App extends Component {
             <Stat value={523} caption={'сред. взнос'} isCurrency={true}/>
           </StatsRow>
         </Paper>
+        <TabsControl
+          tabs={[ 'Последние', 'Рейтинг' ]}
+          current={'Последние'}
+          action={tab => console.log(tab)}
+          />
       </div>
     )
   }
