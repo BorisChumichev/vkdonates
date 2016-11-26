@@ -9,6 +9,7 @@ import StatsRow from 'dumb/stats-row'
 import TabsControl from 'dumb/tabs-control'
 import Income from 'dumb/income'
 import Message from 'dumb/message'
+import PaperButton from 'dumb/paper-button'
 
 class SettingsForm extends Component {
   constructor() {
@@ -23,12 +24,14 @@ class SettingsForm extends Component {
       groupAvatarURL,
       onPaymentIntent,
       onShowGoals,
+      onShowSettings,
       numberOfIncomes,
       sponsorsCount,
       totalIncome,
       averageIncome,
       latestIncomes,
-      largestIncomes
+      largestIncomes,
+      currentUserIsAdmin
     } = this.props
 
     return (
@@ -49,6 +52,9 @@ class SettingsForm extends Component {
           <Stat value={averageIncome} caption={'средний взнос'} isCurrency={true}/>
         </StatsRow>
       </Paper>
+      { currentUserIsAdmin &&
+        <PaperButton action={onShowSettings}>Настройки приложения →</PaperButton>
+      }
       {latestIncomes.length !== 0 &&
         <TabsControl
           tabs={[ 'Последние', 'Рейтинг' ]}
@@ -60,11 +66,11 @@ class SettingsForm extends Component {
         <Message>Никто еще не совршал пожертвований, вы можете стать первым!</Message>
       }
       {{
-        'Последние': latestIncomes.map(income =>
-            <Income id={income.id} name={income.name} value={income.value} avatarURL={income.avatarURL} date={income.date} />
+        'Последние': latestIncomes.map((income, i) =>
+            <Income key={i} id={income.id} name={income.name} value={income.value} avatarURL={income.avatarURL} date={income.date} />
           ),
         'Рейтинг': largestIncomes.map((income, i) =>
-            <Income id={income.id} name={income.name} value={income.value} avatarURL={income.avatarURL} place={i + 1} />
+            <Income key={i} id={income.id} name={income.name} value={income.value} avatarURL={income.avatarURL} place={i + 1} />
           )
       }[this.state.currentTab]}
     </div>

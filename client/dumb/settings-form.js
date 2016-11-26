@@ -14,10 +14,6 @@ class SettingsForm extends Component {
     )
   }
 
-  componentDidMount() {
-    //this.refs.wallet.focus()
-  }
-
   render() {
     const { action, onClose, initialSetup, groupId } = this.props
 

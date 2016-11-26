@@ -24,7 +24,7 @@ class PaymentForm extends Component {
     return (
       <form onSubmit={evt => this.handleSubmit(evt)} className="paymentForm">
         <div className="paymentForm-wrapper">
-          <input min="100" max="15000" ref="amount" className="paymentForm-input" type="number" placeholder="Сумма (руб.)" />
+          <input min="100" max="15000" ref="amount" className="paymentForm-input" type="number" pattern="\d*" placeholder="Сумма (руб.)" />
           <div className="paymentForm-checkbox">
             <input id="incognito" ref="incognito" className="paymentForm-input" type="checkbox" />
             <label htmlFor="incognito">— инкогнито</label>
