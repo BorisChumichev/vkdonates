@@ -1,0 +1,63 @@
+@import "../variables.sass"
+
+.paymentForm
+  display: block
+  padding: 20px
+  &-wrapper
+    background: white
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8
+    border-radius: 20px
+    overflow: hidden
+  &-input
+    width: 100%
+    line-height: 60px
+    font-size: 30px
+    text-align: center
+    border: none
+    border-bottom: 1px solid #eee
+  &-submit
+    background: $fill-color
+    width: 100%
+    line-height: 40px
+    text-align: center
+    color: white
+    border: none
+    border-radius: 20px
+    margin-top: 10px
+    font-size: 14px
+    -webkit-appearance: none
+  &-checkbox
+    height: 30px
+    text-align: center
+    padding-top: 10px
+    & input
+      display: none !important
+    & label
+      font-size: 12px
+      position: relative
+      user-select: none
+      cursor: pointer
+      margin: 0 auto
+    & label:before
+      content: ''
+      width: 14px
+      height: 14px
+      border: 1px solid #888
+      box-sizing: border-box
+      display: inline-block
+      position: relative
+      top: 2px
+      margin-right: 10px
+    & label:after
+      content: ''
+      width: 12px
+      height: 5px
+      border-left: 2px solid #333
+      border-bottom: 2px solid #333
+      position: absolute
+      left: 2px
+      transform: rotate(-45deg)
+      top: 1px
+      display: none
+    & input:checked + label:after
+      display: block
