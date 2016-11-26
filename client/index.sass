@@ -8,9 +8,18 @@ body
   -webkit-font-smoothing: subpixel-antialiased
   background-color: $background-color
   user-select: none
+  width: 100%
   //padding: 25px 30px 30px
 
 @mixin textlink ()
   color: $secondary-color
   text-decoration: none
   cursor: pointer
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+#wrapper
+  width: 100%
