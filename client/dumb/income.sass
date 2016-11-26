@@ -1,0 +1,35 @@
+@import "../variables.sass"
+
+.income
+  position: relative
+  box-sizing: border-box
+  padding-left: 70px
+  display: block
+  text-decoration: none
+  height: 70px
+  color: $text-dark
+  &-corner
+    position: absolute
+    top: 15px
+    right: 10px
+    font-size: 10px
+    color: $text-pale
+  &-name
+    font-weight: bold
+    padding-top: 14px
+    font-size: 14px
+  &-amount
+    color: $text-pale
+    font-size: 14px
+    padding-top: 9px
+    & span
+      color: $text-dark
+  &-avatar
+    position: absolute
+    left: 10px
+    top: 9px
+    width: 50px
+    height: 50px
+    background-size: cover
+    border-radius: 50%
+

@@ -13,8 +13,8 @@ class TabsControl extends Component {
         <Paper>
           {tabs.map(
             tab => (tab === current)
-              ? <div className="tabsControl-tab tabsControl-tab_current">{tab}</div>
-              : <div className="tabsControl-tab" onClick={partial(action, [tab])}>{tab}</div>
+              ? <div key={tab} className="tabsControl-tab tabsControl-tab_current">{tab}</div>
+              : <div key={tab} className="tabsControl-tab" onClick={partial(action, [tab])}>{tab}</div>
           )}
         </Paper>
       </div>
