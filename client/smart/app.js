@@ -9,6 +9,7 @@ import Stat from 'dumb/stat'
 import StatsRow from 'dumb/stats-row'
 import TabsControl from 'dumb/tabs-control'
 import Income from 'dumb/income'
+import Message from 'dumb/message'
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -51,6 +52,7 @@ class App extends Component {
         <Income id="78195752" name="Evgeny Terskikh" value="500" avatarURL="https://pp.vk.me/c626829/v626829622/37ff/9edmvCaf2t4.jpg" date={Date.now() - 120000} />
         <Income id="78195752" name="Inkignito" value="1500" avatarURL={null} date={Date.now() - 12000000} />
         <Income id="78195752" name="Inkignito" value="1500" avatarURL={null} place={1} />
+        <Message>Никто еще не совршал пожертвований, вы можете стать первым!</Message>
       </div>
     )
   }

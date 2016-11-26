@@ -11,7 +11,7 @@ class Income extends Component {
 
     return (
       <Paper>
-        <a href={`https://vk.com/id${userId}`} className="income">
+        <a target="_blank" href={`https://vk.com/id${userId}`} className="income">
           <div style={{
             backgroundImage: avatarURL
               ? `url('${avatarURL}')`
