@@ -1,6 +1,6 @@
 @import "../variables.sass"
 
-.paymentForm
+.settingsForm
   display: block
   padding: 20px
   max-width: 400px
@@ -12,12 +12,24 @@
     overflow: hidden
   &-input
     width: 100%
-    line-height: 60px
-    font-size: 30px
+    line-height: 40px
+    font-size: 20px
     text-align: center
     border: none
-    border-radius: none
+    border-radius: 0
     border-bottom: 1px solid #ddd
+  &-input + &-input
+    border: none
+  &-tutorial
+    color: rgba(0, 0, 0, .5)
+    font-size: 13px
+    margin-top: 10px
+    line-height: 17px
+  &-title
+    text-align: center
+    line-height: 60px
+    font-size: 20px
+    color: rgba(0, 0, 0, .7)
   &-submit
     background: $fill-color
     width: 100%

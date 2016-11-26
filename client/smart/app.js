@@ -11,6 +11,7 @@ import TabsControl from 'dumb/tabs-control'
 import Income from 'dumb/income'
 import Message from 'dumb/message'
 import PaymentForm from 'dumb/payment-form'
+import SettingsForm from 'dumb/settings-form'
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -58,11 +59,21 @@ class App extends Component {
             <Message>Никто еще не совршал пожертвований, вы можете стать первым!</Message>
           </div>
         }
-        { true && 
+        { false && 
           <div>
             <PaymentForm
               onClose={() => console.log('close')}
               action={options => console.log(options)}
+              />
+          </div>
+        }
+        { true && 
+          <div>
+            <SettingsForm
+              onClose={() => console.log('close')}
+              action={options => console.log(options)}
+              initialSetup={true}
+              groupId={123123}
               />
           </div>
         }
