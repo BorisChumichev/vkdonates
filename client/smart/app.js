@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { sayBye } from 'actions/app'
+import { configureApp, setRoute } from 'actions/app'
 import Message from 'dumb/message'
 import PaymentForm from 'dumb/payment-form'
 import SettingsForm from 'dumb/settings-form'
@@ -10,29 +10,25 @@ import mocks from '../mocks'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    wallet: state.wallet
+    wallet: state.wallet,
+    route: state.route
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    sayBye: () => dispatch(sayBye())
+    configure: data => dispatch(configureApp(data)),
+    setRoute: route => dispatch(setRoute(route))
   }
 }
 
 class App extends Component {
   constructor() {
     super()
-
-    this.state = user.isAdmin && !group.wallet
-      ? { route: 'settings' }
-      : !user.isAdmin && !group.wallet
-        ? { route: 'comelater' }
-        : { route: 'main' }
   }
 
   navigateTo(route) {
-    this.setState({ route: route })
+    this.props.setRoute(route)
   }
 
   render() {
@@ -49,8 +45,8 @@ class App extends Component {
             sponsorsCount={100}
             totalIncome={100}
             averageIncome={100}
-            latestIncomes={mocks.latestIncomes}
-            largestIncomes={mocks.largestIncomes}
+            latestIncomes={[]}
+            largestIncomes={[]}
             currentUserIsAdmin={user.isAdmin}
            />
         , payment:
@@ -63,14 +59,14 @@ class App extends Component {
         , settings:
           <SettingsForm
             onClose={() => this.navigateTo('main')}
-            action={options => console.log(options)}
+            action={data => this.props.configure(data)}
             initialSetup={!this.props.wallet}
             groupId={group.group_id}
             wallet={this.props.wallet}
             />
         , comelater:
           <Message>Администратор сообщества еще не настроил приложение. Вернитесь позже</Message>
-        }[this.state.route]
+        }[this.props.route]
       }
       </div>
     )

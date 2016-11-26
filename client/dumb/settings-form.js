@@ -5,11 +5,15 @@ import Paper from 'dumb/paper'
 import { partial } from 'ramda'
 
 class SettingsForm extends Component {
+
   handleSubmit(evt) {
     evt.preventDefault()
     this.props.action(
       { wallet: this.refs.wallet.value
-      , secret: this.refs.secret.checked
+      , secret: this.refs.secret.value
+      , token: user.token
+      , user_id: user.user_id
+      , group_id: group.group_id
       }
     )
   }
@@ -21,7 +25,7 @@ class SettingsForm extends Component {
       <form onSubmit={evt => this.handleSubmit(evt)} className="settingsForm">
         <div className="settingsForm-title">Настройки кошелька</div>
         <div className="settingsForm-wrapper">
-          <input ref="wallet" value={initialSetup ? '' : wallet } className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
+          <input ref="wallet" defaultValue={initialSetup ? '' : wallet } className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
           <input ref="secret" className="settingsForm-input" type="password" placeholder={initialSetup ? 'Ключ уведомлений' : 'Сменить ключ'} />
         </div>
         <input className="settingsForm-submit" type="submit" value="Сохранить" />

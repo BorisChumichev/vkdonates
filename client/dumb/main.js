@@ -63,7 +63,7 @@ class SettingsForm extends Component {
           />
       }
       {latestIncomes.length === 0 &&
-        <Message>Никто еще не совршал пожертвований, вы можете стать первым!</Message>
+        <Message>Никто еще не совeршал пожертвований, вы можете стать первым</Message>
       }
       {{
         'Последние': latestIncomes.map((income, i) =>
