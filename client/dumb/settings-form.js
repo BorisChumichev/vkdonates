@@ -15,14 +15,14 @@ class SettingsForm extends Component {
   }
 
   render() {
-    const { action, onClose, initialSetup, groupId } = this.props
+    const { action, onClose, initialSetup, groupId, wallet } = this.props
 
     return (
       <form onSubmit={evt => this.handleSubmit(evt)} className="settingsForm">
-        <div className="settingsForm-title">Настройка платежей</div>
+        <div className="settingsForm-title">Настройки кошелька</div>
         <div className="settingsForm-wrapper">
-          <input ref="wallet" className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
-          <input ref="secret" className="settingsForm-input" type="password" placeholder="Ключ уведомлений" />
+          <input ref="wallet" value={initialSetup ? null : wallet } className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
+          <input ref="secret" className="settingsForm-input" type="password" placeholder={initialSetup ? 'Ключ уведомлений' : 'Сменить ключ'} />
         </div>
         <input className="settingsForm-submit" type="submit" value="Сохранить" />
         {!initialSetup && <div onClick={onClose} className="settingsForm-back">Вернуться назад</div> }

@@ -61,6 +61,7 @@ class App extends Component {
             action={options => console.log(options)}
             initialSetup={false}
             groupId={123123}
+            wallet={982374523}
             />
         }[this.state.route]
       }
