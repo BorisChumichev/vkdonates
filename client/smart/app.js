@@ -72,7 +72,7 @@ class App extends Component {
             <SettingsForm
               onClose={() => console.log('close')}
               action={options => console.log(options)}
-              initialSetup={true}
+              initialSetup={false}
               groupId={123123}
               />
           </div>

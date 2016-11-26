@@ -30,11 +30,9 @@ class SettingsForm extends Component {
         </div>
         <input className="settingsForm-submit" type="submit" value="Сохранить" />
         {!initialSetup && <div onClick={onClose} className="settingsForm-back">Вернуться назад</div> }
-        { initialSetup &&
-          <div className="settingsForm-tutorial">
-            Чтобы получить <strong>ключ уведомлений</strong> подключите HTTP уведомления в сервисе Яндекс.Деньги. Для этого зайдите в <strong>Яндекс.Деньги&nbsp;→&nbsp;Настройки&nbsp;→&nbsp;Всё&nbsp;остальное</strong> и нажмите <strong>«подключить»</strong> напротив опции <strong>«Уведомления»</strong>. Следуйте инструкциям, в качестве адреса уведомлений укажите: <strong>https://vkdonates.ru/notify/{groupId}</strong>.
-          </div>
-        }
+        <div className="settingsForm-tutorial">
+          Чтобы получить <strong>ключ уведомлений</strong> подключите HTTP уведомления в сервисе Яндекс.Деньги. Для этого зайдите в <strong>Яндекс.Деньги&nbsp;→&nbsp;Настройки&nbsp;→&nbsp;Всё&nbsp;остальное</strong> и нажмите <strong>«подключить»</strong> напротив опции <strong>«Уведомления»</strong>. Следуйте инструкциям, в качестве адреса уведомлений укажите: <strong>https://vkdonates.ru/notify/{groupId}</strong>.
+        </div>
       </form>
     )
   }
