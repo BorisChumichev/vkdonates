@@ -60,7 +60,10 @@ class App extends Component {
         }
         { true && 
           <div>
-            <PaymentForm />
+            <PaymentForm
+              onClose={() => console.log('close')}
+              action={options => console.log(options)}
+              />
           </div>
         }
       </div>
