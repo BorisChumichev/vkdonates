@@ -2,8 +2,8 @@ html
     head
         title Тайтл
         meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
-        script group={ name: "#{group.name}", avatar: "#{group.photo_200}", wallet: #{group.wallet}, group_id: "#{group.group_id}" }
-        script user={ isAdmin: #{user.isAdmin} }
+        script var group = { name: "#{group.name}", avatar: "#{group.photo_200}", wallet: #{group.wallet}, group_id: "#{group.group_id}" }
+        script var user = { isAdmin: #{user.isAdmin}, user_id: #{user.user_id}, token: "#{user.token}" }
     body
         #app
         if app.get('env') == 'production'

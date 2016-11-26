@@ -21,7 +21,7 @@ class SettingsForm extends Component {
       <form onSubmit={evt => this.handleSubmit(evt)} className="settingsForm">
         <div className="settingsForm-title">Настройки кошелька</div>
         <div className="settingsForm-wrapper">
-          <input ref="wallet" value={initialSetup ? null : wallet } className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
+          <input ref="wallet" value={initialSetup ? '' : wallet } className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
           <input ref="secret" className="settingsForm-input" type="password" placeholder={initialSetup ? 'Ключ уведомлений' : 'Сменить ключ'} />
         </div>
         <input className="settingsForm-submit" type="submit" value="Сохранить" />
