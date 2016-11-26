@@ -3,7 +3,7 @@ import moment from 'moment'
 import { merge } from 'ramda'
 
 const defaultState = {
-  greeting: 'привет'
+  wallet: group.wallet
 }
 
 const selector = (state = defaultState, action) => {

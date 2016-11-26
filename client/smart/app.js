@@ -10,7 +10,7 @@ import mocks from '../mocks'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    greeting: state.greeting
+    wallet: state.wallet
   }
 }
 
@@ -23,7 +23,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 class App extends Component {
   constructor() {
     super()
-    this.state = { route: 'main' }
+
+    this.state = user.isAdmin && !group.wallet
+      ? { route: 'settings' }
+      : !user.isAdmin && !group.wallet
+        ? { route: 'comelater' }
+        : { route: 'main' }
   }
 
   navigateTo(route) {
@@ -46,7 +51,7 @@ class App extends Component {
             averageIncome={100}
             latestIncomes={mocks.latestIncomes}
             largestIncomes={mocks.largestIncomes}
-            currentUserIsAdmin={true}
+            currentUserIsAdmin={user.isAdmin}
            />
         , payment:
           <PaymentForm
@@ -59,10 +64,12 @@ class App extends Component {
           <SettingsForm
             onClose={() => this.navigateTo('main')}
             action={options => console.log(options)}
-            initialSetup={false}
-            groupId={123123}
-            wallet={982374523}
+            initialSetup={!this.props.wallet}
+            groupId={group.group_id}
+            wallet={this.props.wallet}
             />
+        , comelater:
+          <Message>Администратор сообщества еще не настроил приложение. Вернитесь позже</Message>
         }[this.state.route]
       }
       </div>
