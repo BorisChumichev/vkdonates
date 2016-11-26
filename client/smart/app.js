@@ -5,6 +5,7 @@ import Message from 'dumb/message'
 import PaymentForm from 'dumb/payment-form'
 import SettingsForm from 'dumb/settings-form'
 import Main from 'dumb/main'
+import mocks from '../mocks'
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,9 +23,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 class App extends Component {
   render() {
     return (
-      <div>
+      <div id="wrapper">
         { true && 
-          <Main />
+          <Main
+            groupName={"Благотворительный фонд «ПОДАРИ ЖИЗНЬ»"}
+            groupAvatarURL={"https://cs7051.vk.me/c626128/v626128515/2891b/NxH6b4w-XKs.jpg"}
+            onPaymentIntent={() => console.log('payment intent')}
+            onShowGoals={() => console.log('on show goals')}
+            numberOfIncomes={100}
+            sponsorsCount={100}
+            totalIncome={100}
+            averageIncome={100}
+            latestIncomes={mocks.latestIncomes}
+            largestIncomes={mocks.largestIncomes}
+           />
         }
         { true && 
           <PaymentForm

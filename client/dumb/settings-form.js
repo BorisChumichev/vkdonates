@@ -26,7 +26,7 @@ class SettingsForm extends Component {
         <div className="settingsForm-title">Настройка платежей</div>
         <div className="settingsForm-wrapper">
           <input ref="wallet" className="settingsForm-input" type="number" placeholder="Яндекс кошелёк" />
-          <input ref="secret" className="settingsForm-input" type="text" placeholder="Ключ уведомлений" />
+          <input ref="secret" className="settingsForm-input" type="password" placeholder="Ключ уведомлений" />
         </div>
         <input className="settingsForm-submit" type="submit" value="Сохранить" />
         {!initialSetup && <div onClick={onClose} className="settingsForm-back">Вернуться назад</div> }

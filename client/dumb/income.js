@@ -18,7 +18,7 @@ class Income extends Component {
               : `url('https://media.giphy.com/media/84Ge7eyiDbGNy/giphy.gif')`
           }} className="income-avatar"></div>
           <div className="income-name">{name}</div>
-          <div className="income-amount">Пожуртвовал <span>{value} руб.</span></div>
+          <div className="income-amount">Пожертвовал <span>{value} руб.</span></div>
           { place && <div className="income-corner">№{place}</div> }
           { date && <div className="income-corner">{moment(date).fromNow()}</div> }
         </a>
