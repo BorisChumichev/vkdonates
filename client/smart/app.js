@@ -5,6 +5,8 @@ import Paper from 'dumb/paper'
 import MainHeading from 'dumb/main-heading'
 import Button from 'dumb/button'
 import ButtonNest from 'dumb/button-nest'
+import Stat from 'dumb/stat'
+import StatsRow from 'dumb/stats-row'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -31,6 +33,12 @@ class App extends Component {
             <Button action={() => console.log('click')}>Сделать взнос</Button>
             <Button isEmpty={true} action={() => console.log('click2')}>Цели сборов</Button>
           </ButtonNest>
+          <StatsRow>
+            <Stat value={311} caption={'взносов'}/>
+            <Stat value={139} caption={'спонсоров'}/>
+            <Stat value={149000} caption={'привлечено'} isCurrency={true}/>
+            <Stat value={523} caption={'сред. взнос'} isCurrency={true}/>
+          </StatsRow>
         </Paper>
       </div>
     )
