@@ -1,0 +1,24 @@
+{
+  "name": "group",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "group_id": {
+      "type": "string",
+      "required": true
+    },
+    "wallet": {
+      "type": "string"
+    },
+    "secret": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -12,5 +12,9 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "group": {
+    "dataSource": "db",
+    "public": false
   }
 }

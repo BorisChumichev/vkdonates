@@ -2,6 +2,7 @@ html
     head
         title Тайтл
         meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
+        script group={ name: "#{group.name}", avatar: "#{group.photo_200}" }
     body
         #app
         if app.get('env') == 'production'

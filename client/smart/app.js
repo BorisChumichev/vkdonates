@@ -35,8 +35,8 @@ class App extends Component {
       <div id="wrapper">
         {{ main:
           <Main
-            groupName={"Благотворительный фонд «ПОДАРИ ЖИЗНЬ»"}
-            groupAvatarURL={"https://cs7051.vk.me/c626128/v626128515/2891b/NxH6b4w-XKs.jpg"}
+            groupName={group.name}
+            groupAvatarURL={group.avatar}
             onPaymentIntent={() => this.navigateTo('payment')}
             onShowGoals={() => this.navigateTo('goals')}
             onShowSettings={() => this.navigateTo('settings')}
