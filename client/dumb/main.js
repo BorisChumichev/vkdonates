@@ -45,12 +45,7 @@ class SettingsForm extends Component {
           <Button action={onPaymentIntent}>Сделать взнос</Button>
           <Button isEmpty={true} action={onShowGoals}>Цели сборов</Button>
         </ButtonNest>
-        <StatsRow>
-          <Stat value={numberOfIncomes} caption={'взносов'}/>
-          <Stat value={sponsorsCount} caption={'спонсоров'}/>
-          <Stat value={totalIncome} caption={'привлечено'} isCurrency={true}/>
-          <Stat value={averageIncome} caption={'средний взнос'} isCurrency={true}/>
-        </StatsRow>
+        
       </Paper>
       { currentUserIsAdmin &&
         <PaperButton action={onShowSettings}>Настройки приложения →</PaperButton>
