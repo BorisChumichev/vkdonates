@@ -7,6 +7,7 @@ import { partial } from 'ramda'
 class PaymentForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
+    this.refs.amount.blur()
     this.props.action(
       { amount: this.refs.amount.value
       , incognito: this.refs.incognito.checked
@@ -31,7 +32,10 @@ class PaymentForm extends Component {
           </div>
         </div>
         <input className="paymentForm-submit" type="submit" value="Отправить" />
-        <div onClick={onClose} className="paymentForm-back">Вернуться назад</div>
+        <div onClick={() => {
+          this.refs.amount.blur()
+          onClose()
+        }} className="paymentForm-back">Вернуться назад</div>
       </form>
     )
   }
