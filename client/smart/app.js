@@ -39,7 +39,7 @@ class App extends Component {
     }&form-comment=${
       encodeURIComponent(`Пожертвование для ${group.name}`)
     }&short-dest=Пожертвование%20Вконтакте&paymentType=AC&quickpay-form=donate&quickpay-back-url=https%3A%2F%2Fvk.com%2Fvkdonates&successURL=https%3A%2F%2Fvk.com%2Fvkdonates&shop-host=vkdonates.com&targets=Пожертвование%20Вконтакте&label=${
-      options.incognito ? user.user_id : 0
+      options.incognito ? 0 : user.user_id
     }&comment=`
   }
 
