@@ -8,6 +8,7 @@ class SettingsForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
+    if (this.refs.wallet.value === '' || this.refs.secret.value === '') return;
     this.props.action(
       { wallet: this.refs.wallet.value
       , secret: this.refs.secret.value

@@ -39,7 +39,14 @@ module.exports = function(app) {
             superagent.get(`https://api.vk.com/method/users.get?user_ids=${users.join(',')}&fields=photo_100`)
               .then(data => { 
                 const users = data.body.response
-                res.render('index', { app, group, user, latestIncomes: JSON.stringify(latestIncomes), largestIncomes: JSON.stringify(largestIncomes), users: JSON.stringify(users), stats: [0, 0, 0, 0, 0] })
+                res.render('index', { app, group, user, latestIncomes: JSON.stringify(latestIncomes), largestIncomes: JSON.stringify(largestIncomes), users: JSON.stringify(users),
+                  stats:
+                    [ incomes.length
+                    , users.length+1
+                    , Math.floor(incomes.reduce((acc, inc) => acc + inc.amount, 0))
+                    , Math.floor(incomes.reduce((acc, inc) => acc + inc.amount, 0) / incomes.length)
+                    ]
+                })
               })
           })
       })

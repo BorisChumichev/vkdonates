@@ -4,9 +4,9 @@ html
         meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
         script var group = { name: "#{group.name}", avatar: "#{group.photo_200}", wallet: #{group.wallet}, group_id: "#{group.group_id}" }
         script var user = { isAdmin: #{user.isAdmin}, user_id: #{user.user_id}, token: "#{user.token}" }
-        script var latestIncomes = JSON.parse("#{latestIncomes}".replace(new RegExp('&quot;', 'g'), '"'))
-        script var largestIncomes = JSON.parse("#{largestIncomes}".replace(new RegExp('&quot;', 'g'), '"'))
-        script var users = JSON.parse("#{users}".replace(new RegExp('&quot;', 'g'), '"'))
+        script try { var latestIncomes = JSON.parse("#{latestIncomes}".replace(new RegExp('&quot;', 'g'), '"')) } catch(e) {}
+        script try { var largestIncomes = JSON.parse("#{largestIncomes}".replace(new RegExp('&quot;', 'g'), '"')) } catch(e) {}
+        script try { var users = JSON.parse("#{users}".replace(new RegExp('&quot;', 'g'), '"')) } catch(e) {}
         script var stats = JSON.parse("[#{stats}]".replace(new RegExp('&quot;', 'g'), '"'))
     body
         #app

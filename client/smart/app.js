@@ -54,9 +54,9 @@ class App extends Component {
             onShowGoals={() => this.navigateTo('goals')}
             onShowSettings={() => this.navigateTo('settings')}
             numberOfIncomes={stats[0]}
-            sponsorsCount={stats[0]}
-            totalIncome={stats[0]}
-            averageIncome={stats[0]}
+            sponsorsCount={stats[1]}
+            totalIncome={stats[2]}
+            averageIncome={stats[3]}
             latestIncomes={latestIncomes}
             largestIncomes={largestIncomes}
             currentUserIsAdmin={user.isAdmin}

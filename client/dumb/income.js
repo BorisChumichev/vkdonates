@@ -15,7 +15,7 @@ class Income extends Component {
           <div style={{
             backgroundImage: avatarURL
               ? `url('${avatarURL}')`
-              : `url('https://media2.giphy.com/media/3xz2BQNrkb0FnzkELe/200w.gif')`
+              : `url('https://media1.giphy.com/media/l2SqgljemRJ7MfNII/200w.gif#142')`
           }} className="income-avatar"></div>
           <div className="income-name">{name}</div>
           <div className="income-amount">Пожертвовал <span>{value} руб.</span></div>

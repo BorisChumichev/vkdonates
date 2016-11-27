@@ -7,7 +7,7 @@ class Stat extends Component {
     const { value, caption, isCurrency } = this.props
     const addK = value =>
       value.toString() > 999
-        ? (value / 1000).toString() + 'K'
+        ? (value / 1000).toString().substring(0, (value / 1000).toString().length-2) + 'K'
         : value.toString()
     return (
       <div className="stat">
