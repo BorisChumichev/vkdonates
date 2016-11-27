@@ -1,0 +1,30 @@
+{
+  "name": "income",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "user_id": {
+      "type": "number",
+      "required": true
+    },
+    "amount": {
+      "type": "number",
+      "required": true
+    },
+    "group_id": {
+      "type": "number",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

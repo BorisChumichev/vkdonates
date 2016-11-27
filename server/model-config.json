@@ -16,5 +16,9 @@
   "group": {
     "dataSource": "db",
     "public": false
+  },
+  "income": {
+    "dataSource": "db",
+    "public": false
   }
 }

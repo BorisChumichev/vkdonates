@@ -1,5 +1,7 @@
 'use strict';
 
+const sha1 = require('sha1')
+
 module.exports = function(app) {
   var router = app.loopback.Router();
   router.get('/', (req, res, next) => {
@@ -44,7 +46,29 @@ module.exports = function(app) {
   });
 
   router.post('/notify/:group_id', (req, res, next) => {
-    console.log('NOTIFICATTION!', req.body)
+    //if (req.body.operation_id === 'test-notification') return res.status(200).end()
+
+    app.models.Group
+      .findOne({ where: { group_id: req.params.group_id } })
+      .then(group => {
+        const notification_secret = group.secret
+        const checkString = `${req.query.notification_type}&${req.query.operation_id}&${req.query.amount}&${req.query.currency}&${req.query.datetime}&${req.query.sender}&${req.query.codepro}&${notification_secret}&${req.query.label}`
+        const checkSum = sha1(checkString)
+        console.log(checkSum, req.query.sha1_hash)
+        if (checkSum !== req.query.sha1_hash) return res.status(401).end()
+        app.models.Income.create({
+          user_id: req.query.label,
+          amount: req.query.amount,
+          group_id: req.params.group_id,
+          date: new Date(req.query.datetime)
+        }).then(income => {
+          console.log('CREATED INCOME', income)
+        })
+      })
+    
+
+
+
     res.status(200).end()
   });
 

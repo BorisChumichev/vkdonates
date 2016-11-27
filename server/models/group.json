@@ -9,7 +9,9 @@
     "group_id": {
       "type": "string",
       "required": true,
-      "index": {"unique": true}
+      "index": {
+        "unique": true
+      }
     },
     "wallet": {
       "type": "string"
