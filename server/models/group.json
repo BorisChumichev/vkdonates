@@ -8,7 +8,8 @@
   "properties": {
     "group_id": {
       "type": "string",
-      "required": true
+      "required": true,
+      "index": {"unique": true}
     },
     "wallet": {
       "type": "string"

@@ -29,18 +29,21 @@ module.exports = function(app) {
   });
 
   router.post('/configure', (req, res, next) => {
-    console.log(req.body)
+    
     if ( (parseInt(req.body.user_id) + parseInt(req.body.group_id)).toString(16).replace('.', '') !== req.body.token )
       return res.status(403).end()
 
-    app.models.Group.create({
-      group_id: req.body.group_id,
-      wallet: req.body.wallet,
-      secret: req.body.secret
-    }, (data, err) => {
-      console.log(data, err)
-      res.json(data)
-    })
+    app.models.Group.upsertWithWhere(
+      { group_id: req.body.group_id },
+      {
+        group_id: req.body.group_id,
+        wallet: req.body.wallet,
+        secret: req.body.secret
+      }, (data, err) => {
+    
+        res.json(data)
+      }
+    )
   });
 
 

@@ -14,6 +14,7 @@ class SettingsForm extends Component {
       , token: user.token
       , user_id: user.user_id
       , group_id: group.group_id
+      , update: !this.props.initialSetup
       }
     )
   }
