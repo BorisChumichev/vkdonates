@@ -1,6 +1,9 @@
 'use strict';
 
 const sha1 = require('sha1')
+const R = require('ramda')
+const bb = require('bluebird')
+const superagent = require('superagent')
 
 module.exports = function(app) {
   var router = app.loopback.Router();
@@ -12,7 +15,7 @@ module.exports = function(app) {
       var user = { isAdmin: req.query.viewer_type == 4, user_id: req.query.viewer_id }
       if (user.isAdmin) user.token = (parseInt(req.query.viewer_id) + parseInt(req.query.group_id)).toString(16).replace('.', '')
     } catch(err) {
-      res.end('nothin there yet')
+      return res.end('nothin there yet')
     }
     
     app.models.Group
@@ -22,7 +25,23 @@ module.exports = function(app) {
           ? false
           : data.wallet
 
-        res.render('index', { app, group, user })
+        app.models.Income.find({ where: { group_id: group.group_id } })
+          .then(incomes => {
+            if (!incomes.length) return res.render('index', { app, group, user, latestIncomes: '[]', largestIncomes: '[]', stats: [0, 0, 0, 0, 0] })
+            
+            var desc = function(a, b) { return b.amount - a.amount }
+            var byDate = function(a, b) { return b.date - a.date }
+
+            const latestIncomes = R.take(20, R.sort(byDate, incomes))
+            const largestIncomes = R.take(20, R.sort(desc, incomes))
+            const users = R.uniq(latestIncomes.concat(latestIncomes).map(R.prop('user_id')))
+
+            superagent.get(`https://api.vk.com/method/users.get?user_ids=${users.join(',')}&fields=photo_100`)
+              .then(data => { 
+                const users = data.body.response
+                res.render('index', { app, group, user, latestIncomes: JSON.stringify(latestIncomes), largestIncomes: JSON.stringify(largestIncomes), users: JSON.stringify(users), stats: [0, 0, 0, 0, 0] })
+              })
+          })
       })
 
     
@@ -63,10 +82,9 @@ module.exports = function(app) {
           date: new Date(req.body.datetime)
         }).then(income => {
           console.log('CREATED INCOME', income)
+          res.status(200).end()
         })
       })
-
-    res.status(200).end()
   });
 
   app.use(router);

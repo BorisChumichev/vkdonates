@@ -53,13 +53,14 @@ class App extends Component {
             onPaymentIntent={() => this.navigateTo('payment')}
             onShowGoals={() => this.navigateTo('goals')}
             onShowSettings={() => this.navigateTo('settings')}
-            numberOfIncomes={100}
-            sponsorsCount={100}
-            totalIncome={100}
-            averageIncome={100}
-            latestIncomes={[]}
-            largestIncomes={[]}
+            numberOfIncomes={stats[0]}
+            sponsorsCount={stats[0]}
+            totalIncome={stats[0]}
+            averageIncome={stats[0]}
+            latestIncomes={latestIncomes}
+            largestIncomes={largestIncomes}
             currentUserIsAdmin={user.isAdmin}
+            users={users}
            />
         , payment:
           <PaymentForm
