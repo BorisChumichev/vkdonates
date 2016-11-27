@@ -19,6 +19,11 @@ class SettingsForm extends Component {
       currentTab: 'Последние'
     }
   }
+  
+  componentDidMount() {
+    VK.callMethod("resizeWindow", 795, document.getElementById('wrapper').offsetHeight)
+  }
+
   render() {
     const {
       groupName,
