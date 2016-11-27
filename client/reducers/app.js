@@ -21,6 +21,7 @@ const selector = (state = defaultState, action) => {
       return merge(state, { isLoading: !state.isLoading })
 
     case 'SET_ROUTE':
+      setTimeout( () => VK.callMethod("resizeWindow", 795, document.getElementById('wrapper').offsetHeight), 1000);
       return merge(state, { route: action.route })
 
     default:

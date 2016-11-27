@@ -3,6 +3,13 @@ html
         title Тайтл
         meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
         script var group = { name: "#{group.name}", avatar: "#{group.photo_200}", wallet: #{group.wallet}, group_id: "#{group.group_id}" }
+        script(src="https://vk.com/js/api/xd_connection.js?2" type="text/javascript")
+        script.
+            VK.init(function() { 
+                
+            }, function() { 
+                console.log('API INIT FAILURE')
+            }, '5.60'); 
         script var user = { isAdmin: #{user.isAdmin}, user_id: #{user.user_id}, token: "#{user.token}" }
         script try { var latestIncomes = JSON.parse("#{latestIncomes}".replace(new RegExp('&quot;', 'g'), '"')) } catch(e) {}
         script try { var largestIncomes = JSON.parse("#{largestIncomes}".replace(new RegExp('&quot;', 'g'), '"')) } catch(e) {}
