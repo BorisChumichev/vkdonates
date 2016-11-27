@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { configureApp, setRoute } from 'actions/app'
 import Message from 'dumb/message'
 import PaymentForm from 'dumb/payment-form'
+import PaperButton from 'dumb/paper-button'
 import SettingsForm from 'dumb/settings-form'
 import Main from 'dumb/main'
 import mocks from '../mocks'
@@ -77,8 +78,10 @@ class App extends Component {
             />
         , comelater:
           <Message>Администратор сообщества еще не настроил приложение. Вернитесь позже</Message>
-        , goals:
-          <Message>{group.description}</Message>
+        , goals: <div>
+            <PaperButton action={() => this.navigateTo('main')}>Вернуться назад</PaperButton>
+            <Message><div dangerouslySetInnerHTML={{__html: group.description}}></div></Message>
+          </div>
         }[this.props.route]
       }
       </div>
