@@ -17,6 +17,8 @@ module.exports = function(app) {
     } catch(err) {
       return res.end('nothin there yet')
     }
+
+    if (!group || !group.group_id) return res.end('<a href="https://vk.com/add_community_app?aid=5746556&callback_url=http://vkdonates.ru">Установить приложение</a>')
     
     app.models.Group
       .findOne({ where: { group_id: group.group_id } })
