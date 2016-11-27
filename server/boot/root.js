@@ -15,10 +15,10 @@ module.exports = function(app) {
       var user = { isAdmin: req.query.viewer_type == 4, user_id: req.query.viewer_id }
       if (user.isAdmin) user.token = (parseInt(req.query.viewer_id) + parseInt(req.query.group_id)).toString(16).replace('.', '')
     } catch(err) {
-      return res.end('nothin there yet')
+      return res.render('titlepage', {})
     }
 
-    if (!group || !group.group_id) return res.end('<a href="https://vk.com/add_community_app?aid=5746556&callback_url=http://vkdonates.ru">Установить приложение</a>')
+    if (!group || !group.group_id) return res.render('titlepage', {})
     
     app.models.Group
       .findOne({ where: { group_id: group.group_id } })
