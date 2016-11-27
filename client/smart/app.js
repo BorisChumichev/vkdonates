@@ -77,6 +77,8 @@ class App extends Component {
             />
         , comelater:
           <Message>Администратор сообщества еще не настроил приложение. Вернитесь позже</Message>
+        , goals:
+          <Message>{group.description}</Message>
         }[this.props.route]
       }
       </div>

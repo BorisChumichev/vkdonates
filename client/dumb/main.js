@@ -19,7 +19,7 @@ class SettingsForm extends Component {
       currentTab: 'Последние'
     }
   }
-  
+
   componentDidMount() {
     VK.callMethod("resizeWindow", 795, document.getElementById('wrapper').offsetHeight)
   }
@@ -50,7 +50,7 @@ class SettingsForm extends Component {
           />
         <ButtonNest>
           <Button action={onPaymentIntent}>Сделать взнос</Button>
-          <Button isEmpty={true} action={onShowGoals}>Цели сборов</Button>
+          <Button isEmpty={true} action={onShowGoals}>Цели проекта</Button>
         </ButtonNest>
         <StatsRow>
           <Stat value={numberOfIncomes} caption={'взносов'}/>
