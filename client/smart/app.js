@@ -31,6 +31,18 @@ class App extends Component {
     this.props.setRoute(route)
   }
 
+  handlePayment(options) {
+    window.top.location = `https://money.yandex.ru/quickpay/cps-preparation.xml?receiver=${
+      this.props.wallet
+    }&sum=${
+      options.amount
+    }&form-comment=${
+      encodeURIComponent(`Пожертвование для ${group.name}`)
+    }&short-dest=Пожертвование%20Вконтакте&paymentType=AC&quickpay-form=donate&quickpay-back-url=https%3A%2F%2Fvk.com%2Fvkdonates&successURL=https%3A%2F%2Fvk.com%2Fvkdonates&shop-host=vkdonates.com&targets=Пожертвование%20Вконтакте&label=${
+      options.incognito ? user.user_id : 0
+    }&comment=`
+  }
+
   render() {
     return (
       <div id="wrapper">
@@ -52,9 +64,7 @@ class App extends Component {
         , payment:
           <PaymentForm
             onClose={() => this.navigateTo('main')}
-            action={options => {
-              window.top.location = `https://money.yandex.ru/quickpay/cps-preparation.xml?receiver=410012497185588&sum=${options.amount}&form-comment=Пожертвование%20Вконтакте&short-dest=Пожертвование%20Вконтакте&paymentType=AC&quickpay-form=donate&quickpay-back-url=https%3A%2F%2Fvk.com%2Fvkdonates&successURL=https%3A%2F%2Fvk.com%2Fvkdonates&shop-host=vkdonates.com&targets=Пожертвование%20Вконтакте&label=lllll&comment=`
-            }}
+            action={options => this.handlePayment(options)}
             />
         , settings:
           <SettingsForm

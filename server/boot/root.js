@@ -4,8 +4,6 @@ module.exports = function(app) {
   var router = app.loopback.Router();
   router.get('/', (req, res, next) => {
     
-    //todo: check sign here 
-    
     try {
       var group = JSON.parse(req.query.api_result).response[0]
       group.group_id = req.query.group_id
@@ -39,13 +37,15 @@ module.exports = function(app) {
         group_id: req.body.group_id,
         wallet: req.body.wallet,
         secret: req.body.secret
-      }, (data, err) => {
-    
+      }, (data, err) => {    
         res.json(data)
       }
     )
   });
 
+  router.post('/notify/:group_id', (req, res, next) => {
+    console.log('NOTIFICATTION!', console.log(req.body))
+  });
 
   app.use(router);
 };
