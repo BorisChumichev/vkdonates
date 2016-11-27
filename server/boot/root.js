@@ -44,7 +44,7 @@ module.exports = function(app) {
   });
 
   router.post('/notify/:group_id', (req, res, next) => {
-    console.log('NOTIFICATTION!', console.log(req.body))
+    console.log('NOTIFICATTION!', req.body)
   });
 
   app.use(router);
