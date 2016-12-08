@@ -74,7 +74,7 @@ module.exports = function(app) {
   });
 
   router.post('/notify/:group_id', (req, res, next) => {
-    //if (req.body.operation_id === 'test-notification') return res.status(200).end()
+    if (req.body.operation_id === 'test-notification') return res.status(200).end()
 
     app.models.Group
       .findOne({ where: { group_id: req.params.group_id } })
