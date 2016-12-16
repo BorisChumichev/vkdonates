@@ -7,7 +7,6 @@ import PaperButton from 'dumb/paper-button'
 import SettingsForm from 'dumb/settings-form'
 import Paper from 'dumb/paper'
 import Main from 'dumb/main'
-import mocks from '../mocks'
 
 
 const mapStateToProps = (state, ownProps) => {
