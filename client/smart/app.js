@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+import { paymentURL } from '../util'
 import { configureApp, setRoute } from 'actions/app'
 import Message from 'dumb/message'
 import PaymentForm from 'dumb/payment-form'
@@ -24,24 +26,26 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 class App extends Component {
-  constructor() {
-    super()
-  }
-
   navigateTo(route) {
     this.props.setRoute(route)
   }
 
   handlePayment(options) {
-    window.top.location = `https://money.yandex.ru/quickpay/cps-preparation.xml?receiver=${
-      this.props.wallet
-    }&sum=${
-      options.amount
-    }&form-comment=${
-      encodeURIComponent(`Пожертвование для ${group.name}`)
-    }&short-dest=Пожертвование%20Вконтакте&paymentType=AC&quickpay-form=donate&quickpay-back-url=https%3A%2F%2Fvk.com&successURL=https%3A%2F%2Fvk.com%2Fvkdonates&shop-host=vkdonates.com&targets=Пожертвование%20Вконтакте&label=${
-      options.incognito ? 0 : user.user_id
-    }&comment=`
+    const url = paymentURL(
+      '/quickpay/cps-preparation.xml',
+      { 'receiver': this.props.wallet
+      , 'sum': options.amount
+      , 'successURL': `https://vk.com/${group.group_id}`
+      , 'label': options.incognito ? 0 : user.user_id
+      , 'form-comment': group.name
+      }
+    )
+
+    try {
+      window.open(url)
+    } catch(e) {
+      window.top.location = url
+    }
   }
 
   render() {
@@ -63,11 +67,13 @@ class App extends Component {
             currentUserIsAdmin={user.isAdmin}
             users={users}
            />
+
         , payment:
           <PaymentForm
             onClose={() => this.navigateTo('main')}
             action={options => this.handlePayment(options)}
             />
+
         , settings:
           <SettingsForm
             onClose={() => this.navigateTo('main')}
@@ -76,12 +82,21 @@ class App extends Component {
             groupId={group.group_id}
             wallet={this.props.wallet}
             />
+
         , comelater:
           <Message>Администратор сообщества еще не настроил приложение. Вернитесь позже</Message>
-        , goals: <div>
+
+        , goals:
+          <div>
             <PaperButton action={() => this.navigateTo('main')}>Вернуться назад</PaperButton>
-            <Paper><div style={{ padding: '20px', marginTop: '10px' }} dangerouslySetInnerHTML={{__html: group.description}}></div></Paper>
+            <Paper>
+              <div
+                style={{ padding: '20px', marginTop: '10px' }}
+                dangerouslySetInnerHTML={{__html: group.description}}>
+              </div>
+            </Paper>
           </div>
+
         }[this.props.route]
       }
       </div>
