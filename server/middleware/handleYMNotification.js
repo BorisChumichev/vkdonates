@@ -3,7 +3,7 @@
 const sha1 = require('sha1')
 
 module.exports = app => (req, res, next) => {
-    //if (req.body.operation_id === 'test-notification') return res.status(200).end()
+    if (req.body.operation_id === 'test-notification') return res.status(200).end()
 
     app.models.Group
       .findOne({ where: { group_id: req.params.group_id } })
