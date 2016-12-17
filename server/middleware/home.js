@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = app => (req, res, next) =>
+module.exports = app => (req, res, next) => {
   app.models.Income.summaryForGroup(req.group.group_id)
     .then(incomeSummary =>
       res.render
@@ -16,3 +16,4 @@ module.exports = app => (req, res, next) =>
         )
     )
     .catch(next)
+}

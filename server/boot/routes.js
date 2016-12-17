@@ -6,6 +6,7 @@ module.exports = app =>
       .get
         ( '/'
         , require('../middleware/parseURL')
+        , require('../middleware/request-signature-check')(app)
         , require('../middleware/resolveGroup')(app)
         , require('../middleware/home')(app)
         )
