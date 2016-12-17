@@ -27,7 +27,8 @@ module.exports = app => (req, res, next) => {
 
         app.models.Income.create({
           user_id: req.body.label,
-          amount: req.body.amount,
+          amount: req.body.withdraw_amount,
+          actual_amount: req.body.amount,
           group_id: req.params.group_id,
           date: new Date(req.body.datetime)
         }).then(income => {

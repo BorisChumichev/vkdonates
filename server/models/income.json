@@ -14,6 +14,10 @@
       "type": "number",
       "required": true
     },
+    "actual_amount": {
+      "type": "number",
+      "required": true
+    },
     "group_id": {
       "type": "number",
       "required": true
