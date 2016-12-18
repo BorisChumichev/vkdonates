@@ -5,7 +5,7 @@ module.exports = app =>
     app.loopback.Router()
       .get
         ( '/'
-        , require('../middleware/parseURL')
+        , require('../middleware/parseURL')(app)
         , require('../middleware/request-signature-check')(app)
         , require('../middleware/resolveGroup')(app)
         , require('../middleware/home')(app)

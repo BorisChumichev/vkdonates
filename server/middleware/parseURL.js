@@ -1,6 +1,7 @@
 'use strict';
 
 const { merge } = require('ramda')
+const sha1 = require('sha1')
 
 const OWNER_TYPE = 4 // https://vk.com/dev/apps_init?f=2.%20viewer_type
 
@@ -15,16 +16,16 @@ const parseGroupData = q => {
     }
   }
 
-const parseUserData = q => (
+const parseUserData = (q, secret) => (
     { isAdmin: q.viewer_type == OWNER_TYPE
     , user_id: q.viewer_id
-    , token: (parseInt(q.viewer_id) + parseInt(q.group_id)).toString(16).replace('.', '')
+    , token: sha1(q.viewer_id + q.group_id + secret)
     }
   )
 
-module.exports = (req, res, next) => {
+module.exports = app => (req, res, next) => {
   req.group = parseGroupData(req.query)
-  req.user = parseUserData(req.query)
+  req.user = parseUserData(req.query, app.get('VK_SECRET_KEY'))
 
   return (req.group && req.group.group_id)    
     ? next()
