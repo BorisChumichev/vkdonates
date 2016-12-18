@@ -10,6 +10,7 @@ import TabsControl from 'dumb/tabs-control'
 import Income from 'dumb/income'
 import Message from 'dumb/message'
 import PaperButton from 'dumb/paper-button'
+import { plural } from '../util'
 import R from 'ramda'
 
 class SettingsForm extends Component {
@@ -53,8 +54,8 @@ class SettingsForm extends Component {
           <Button isEmpty={true} action={onShowGoals}>Цели проекта</Button>
         </ButtonNest>
         <StatsRow>
-          <Stat value={numberOfIncomes} caption={'взносов'}/>
-          <Stat value={sponsorsCount} caption={'спонсоров'}/>
+          <Stat value={numberOfIncomes} caption={plural(numberOfIncomes, ['взнос', 'взносa', 'взносов'])}/>
+          <Stat value={sponsorsCount} caption={plural(sponsorsCount, ['спонсор', 'спонсорa', 'спонсоров'])}/>
           <Stat value={totalIncome} caption={'привлечено'} isCurrency={true}/>
           <Stat value={averageIncome} caption={'средний взнос'} isCurrency={true}/>
         </StatsRow>
