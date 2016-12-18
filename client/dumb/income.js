@@ -11,11 +11,11 @@ class Income extends Component {
 
     return (
       <Paper>
-        <a target="_blank" href={`https://vk.com/id${userId}`} className="income">
+        <a onClick={evt => userId === undefined && evt.preventDefault()} target="_blank" href={`https://vk.com/id${userId}`} className="income">
           <div style={{
             backgroundImage: avatarURL
               ? `url('${avatarURL}')`
-              : `url('https://media1.giphy.com/media/l2SqgljemRJ7MfNII/200w.gif#142')`
+              : `url('https://media.giphy.com/media/l41lVdUpymPxlNly8/giphy.gif')`
           }} className="income-avatar"></div>
           <div className={`income-name${place ? ` place${place}` : '' }`}>{name}</div>
           <div className="income-amount">Пожертвование: <span>{value} руб.</span></div>
