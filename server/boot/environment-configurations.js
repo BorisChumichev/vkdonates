@@ -2,7 +2,13 @@
 
 const { forEach, keys, without, isEmpty } = require('ramda')
 
-const requiredVariables = [ 'VK_SECRET_KEY' ]
+const requiredVariables =
+  [ 'VK_SECRET_KEY'
+  , 'DB_HOST'
+  , 'DB_USER'
+  , 'DB_PASSWORD'
+  , 'DB_DATABASE'
+  ]
 
 module.exports = app => {
   const passedVars = keys(process.env)
