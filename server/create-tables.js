@@ -1,5 +1,5 @@
 var server = require('./server')
-var ds = server.dataSources.postgresDS
+var ds = server.dataSources.postgres
 var tables = ['Group', 'Income']
 ds.automigrate(tables, function(er) {
   if (er) throw er
