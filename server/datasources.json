@@ -1,6 +1,10 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
+  "postgres": {
+    "host": "${DB_HOST}",
+    "database": "${DB_DATABASE}",
+    "password": "${DB_PASSWORD}",
+    "name": "postgres",
+    "connector": "postgresql",
+    "user": "${DB_USER}"
   }
 }
