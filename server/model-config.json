@@ -14,11 +14,11 @@
     ]
   },
   "group": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   },
   "income": {
-    "dataSource": "db",
+    "dataSource": "postgres",
     "public": false
   }
 }

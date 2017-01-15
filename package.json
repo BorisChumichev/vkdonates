@@ -22,6 +22,7 @@
     "loopback": "^2.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
+    "loopback-connector-postgresql": "^2.7.0",
     "loopback-datasource-juggler": "^2.39.0",
     "pug": "2.0.0-alpha6",
     "ramda": "0.21.0",
@@ -36,6 +37,7 @@
     "sha1": "^1.1.1",
     "strong-error-handler": "^1.0.1",
     "superagent": "^2.3.0",
+    "url-factory": "^2.0.0",
     "webpack": "1.12.12"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 {
   "name": "income",
   "base": "PersistedModel",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
@@ -11,6 +11,10 @@
       "required": true
     },
     "amount": {
+      "type": "number",
+      "required": true
+    },
+    "actual_amount": {
       "type": "number",
       "required": true
     },
