@@ -1,5 +1,3 @@
-'use strict';
-
 const crypto = require('crypto')
   , { reject, keys, contains } = require('ramda')
 

@@ -1,5 +1,3 @@
-'use strict';
-
 const configureAssetsHash = app =>
   app.set(
     'assets',

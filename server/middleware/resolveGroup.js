@@ -1,5 +1,3 @@
-'use strict';
-
 const { get, partial } = require('lodash')
 
 module.exports = app => (req, res, next) =>

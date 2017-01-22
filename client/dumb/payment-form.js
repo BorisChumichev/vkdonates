@@ -1,10 +1,10 @@
 import './payment-form.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Paper from 'dumb/paper'
 import { partial } from 'ramda'
 
-class PaymentForm extends Component {
+export default class PaymentForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault()
     this.refs.amount.blur()
@@ -40,5 +40,3 @@ class PaymentForm extends Component {
     )
   }
 }
-
-export default PaymentForm;

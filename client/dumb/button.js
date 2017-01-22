@@ -1,8 +1,8 @@
 import './button.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class Button extends Component {
+export default class Button extends Component {
   render() {
     return (
       <div
@@ -13,5 +13,3 @@ class Button extends Component {
     )
   }
 }
-
-export default Button;

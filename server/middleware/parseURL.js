@@ -1,5 +1,3 @@
-'use strict';
-
 const { merge } = require('ramda')
 const sha1 = require('sha1')
 

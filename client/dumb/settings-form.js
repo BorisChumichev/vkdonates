@@ -1,22 +1,22 @@
 import './settings-form.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Paper from 'dumb/paper'
 import { partial } from 'ramda'
 
-class SettingsForm extends Component {
+export default class SettingsForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    if (this.refs.wallet.value === '' || this.refs.secret.value === '') return;
+    if (this.refs.wallet.value === '' || this.refs.secret.value === '') return
     this.refs.wallet.blur()
     this.refs.secret.blur()
     this.props.action(
       { wallet: this.refs.wallet.value
       , secret: this.refs.secret.value
-      , token: user.token
-      , user_id: user.user_id
-      , group_id: group.group_id
+      , token: this.props.user.token
+      , user_id: this.props.user.user_id
+      , group_id: this.props.group.group_id
       , update: !this.props.initialSetup
       }
     )
@@ -45,5 +45,3 @@ class SettingsForm extends Component {
     )
   }
 }
-
-export default SettingsForm;

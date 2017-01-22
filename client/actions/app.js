@@ -42,7 +42,7 @@ export const configureApp = (data) => {
       url: '/configure',
       data: JSON.stringify(data),
       dataType: 'json',
-      contentType: "application/json",
+      contentType: 'application/json',
       success: handle
     })
   }

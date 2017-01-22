@@ -1,8 +1,8 @@
 import './paper.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class Paper extends Component {
+export default class Paper extends Component {
   render() {
     return (
       <div className="paper">
@@ -11,5 +11,3 @@ class Paper extends Component {
     )
   }
 }
-
-export default Paper;

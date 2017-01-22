@@ -1,5 +1,3 @@
-'use strict';
-
 const sha1 = require('sha1')
 
 module.exports = app => (req, res, next) => {

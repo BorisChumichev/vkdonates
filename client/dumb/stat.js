@@ -1,8 +1,8 @@
 import './stat.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class Stat extends Component {
+export default class Stat extends Component {
   render() {
     const { value, caption, isCurrency } = this.props
     const addK = value =>
@@ -22,5 +22,3 @@ class Stat extends Component {
     )
   }
 }
-
-export default Stat;

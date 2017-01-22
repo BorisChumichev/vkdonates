@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Paper from 'dumb/paper'
 import { partial } from 'ramda'
 import MainHeading from 'dumb/main-heading'
@@ -11,9 +11,9 @@ import Income from 'dumb/income'
 import Message from 'dumb/message'
 import PaperButton from 'dumb/paper-button'
 import { plural } from '../util'
-import R from 'ramda'
+import { find, propEq } from 'ramda'
 
-class SettingsForm extends Component {
+export default class Main extends Component {
   constructor() {
     super()
     this.state = {
@@ -22,7 +22,11 @@ class SettingsForm extends Component {
   }
 
   componentDidMount() {
-    VK.callMethod("resizeWindow", 795, document.getElementById('wrapper').offsetHeight)
+    VK.callMethod(
+      'resizeWindow',
+      795,
+      document.getElementById('wrapper').offsetHeight
+    )
   }
 
   render() {
@@ -75,13 +79,13 @@ class SettingsForm extends Component {
       }
       {{
         'Последние': latestIncomes.map((income, i) => {
-            let user = R.find(R.propEq('uid', income.user_id))(users)
+            let user = find(propEq('uid', income.user_id))(users)
             if (!user) user = { first_name: 'Инкогнито', last_name: '' }
             return <Income key={i} userId={user.uid} name={`${user.first_name} ${user.last_name}` } value={income.amount} avatarURL={user.photo_100} date={income.date} />
           }
           ),
         'Рейтинг': largestIncomes.map((income, i) => {
-            let user = R.find(R.propEq('uid', income.user_id))(users)
+            let user = find(propEq('uid', income.user_id))(users)
             if (!user) user = { first_name: 'Инкогнито', last_name: '' }
             return <Income key={i} userId={user.uid} name={`${user.first_name} ${user.last_name}`} value={income.amount} avatarURL={user.photo_100} place={i + 1} />
           }
@@ -91,5 +95,3 @@ class SettingsForm extends Component {
     )
   }
 }
-
-export default SettingsForm

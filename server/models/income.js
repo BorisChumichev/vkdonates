@@ -1,5 +1,3 @@
-'use strict';
-
 const superagent = require('superagent')
 const R = require('ramda')
 const bb = require('bluebird')

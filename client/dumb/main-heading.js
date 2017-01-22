@@ -1,8 +1,8 @@
 import './main-heading.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class MainHeading extends Component {
+export default class MainHeading extends Component {
   render() {
     return (
       <div className="mainHeading">
@@ -16,5 +16,3 @@ class MainHeading extends Component {
     )
   }
 }
-
-export default MainHeading;

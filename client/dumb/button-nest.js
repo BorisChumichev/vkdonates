@@ -1,8 +1,8 @@
 import './button-nest.sass'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class ButtonNest extends Component {
+export default class ButtonNest extends Component {
   render() {
     const coupled = this.props.children.length === 2
 
@@ -13,5 +13,3 @@ class ButtonNest extends Component {
     )
   }
 }
-
-export default ButtonNest;

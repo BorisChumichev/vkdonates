@@ -1,5 +1,3 @@
-'use strict';
-
 const { forEach, keys, without, isEmpty } = require('ramda')
 
 const requiredVariables =

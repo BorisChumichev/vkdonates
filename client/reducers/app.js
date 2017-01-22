@@ -3,10 +3,10 @@ import moment from 'moment'
 import { merge } from 'ramda'
 
 const defaultState = {
-  wallet: group.wallet,
-  route: user.isAdmin && !group.wallet
+  wallet: window.group.wallet,
+  route: window.user.isAdmin && !window.group.wallet
     ? 'settings'
-    : !user.isAdmin && !group.wallet
+    : !window.user.isAdmin && !window.group.wallet
       ? 'comelater'
       : 'main',
   isLoading: false
@@ -21,7 +21,7 @@ const selector = (state = defaultState, action) => {
       return merge(state, { isLoading: !state.isLoading })
 
     case 'SET_ROUTE':
-      setTimeout( () => VK.callMethod("resizeWindow", 795, document.getElementById('wrapper').offsetHeight), 100);
+      setTimeout(() => VK.callMethod('resizeWindow', 795, document.getElementById('wrapper').offsetHeight), 100)
       return merge(state, { route: action.route })
 
     default:
