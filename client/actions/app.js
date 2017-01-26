@@ -23,7 +23,7 @@ export const setRoute = route => {
 
 export const toggleLoading = () => {
   return {
-    type: 'TOGGLE_LOADING',
+    type: 'TOGGLE_LOADING'
   }
 }
 

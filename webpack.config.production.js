@@ -1,21 +1,21 @@
-'use strict';
+'use strict'
 
-const webpack = require('webpack');
-const config = require('./webpack.config.base.js');
+const webpack = require('webpack')
+const config = require('./webpack.config.base.js')
 
-const SaveAssetsJson = require('assets-webpack-plugin');
+const SaveAssetsJson = require('assets-webpack-plugin')
 
-config.bail = true;
-config.debug = false;
-config.profile = false;
-config.devtool = null;
+config.bail = true
+config.debug = false
+config.profile = false
+config.devtool = null
 
 config.output = {
   path: './public/dist',
   pathInfo: true,
   publicPath: '/',
   filename: 'bundle.[hash].min.js'
-};
+}
 
 config.plugins = config.plugins.concat([
   new webpack.optimize.OccurenceOrderPlugin(true),
@@ -38,7 +38,7 @@ config.plugins = config.plugins.concat([
       NODE_ENV: JSON.stringify('production')
     }
   })
-]);
+])
 
 config.module.loaders = config.module.loaders.concat([
   {
@@ -46,6 +46,6 @@ config.module.loaders = config.module.loaders.concat([
     exclude: /node_modules/,
     loader: 'babel'
   }
-]);
+])
 
-module.exports = config;
+module.exports = config
