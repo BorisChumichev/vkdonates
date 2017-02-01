@@ -1,7 +1,7 @@
-// monkey patching dotenv’s config method so that
+// Monkey patching dotenv’s config method so that
 // it accepts list of required variables and throws
-// an error if required variable is missing.
-// returns a proxy object that targets to dotenv.
+// an error if any of required variables is missing.
+// Returns a proxy object that targets to dotenv.
 
 const { keys, without, isEmpty, not } = require('ramda')
   
