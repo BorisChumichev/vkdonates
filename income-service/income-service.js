@@ -2,6 +2,7 @@ const parseURL = require('url').parse
   , responce =
     { 'POST:/': require('./controllers/income-create')
     , 'GET:/group-report': require('./controllers/income-group-report')
+    , 'GET:/latest': require('./controllers/income-latest')
     }
 
 module.exports = async function (req, res) {
