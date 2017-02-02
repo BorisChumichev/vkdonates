@@ -1,24 +1,21 @@
-const { forEach, keys, without, isEmpty } = require('ramda')
+const { forEach, keys, without, isEmpty, not } = require('ramda')
+  
+  , errorMessage = vars =>
+    `You have to define ${vars.join(',')} environment variable`
 
-const requiredVariables =
-  [ 'VK_SECRET_KEY'
-  , 'DB_HOST'
-  , 'DB_USER'
-  , 'DB_PASSWORD'
-  , 'DB_DATABASE'
-  ]
+  , createProxy = (dotenv, requiredVariables) => {
+      const configOriginal = dotenv.config
 
-module.exports = app => {
-  const passedVars = keys(process.env)
-    , missedRequiredVars = without(passedVars, requiredVariables)
+      dotenv.config = () => {
+        configOriginal.call(dotenv)
 
-  if (isEmpty(missedRequiredVars))
-    forEach(
-      key => app.set(key, process.env[key]),
-      passedVars
-    )
-  else
-    throw new Error(
-        `You have to define ${missedRequiredVars.join(',')} for your environment`
-      )
-}
+        const missedRequiredVars = without(keys(process.env), requiredVariables)
+        
+        if (not(isEmpty(missedRequiredVars)))
+          throw new Error(errorMessage(missedRequiredVars))
+      }
+      return dotenv
+    }
+
+module.exports = requiredVariables =>
+  createProxy(require('dotenv'), requiredVariables)
