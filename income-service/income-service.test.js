@@ -84,8 +84,8 @@ test('Largest incomes for group', async t => {
         }
       )
 
-  t.is(response[0].amount, fixtures('4')[2].amount)
-  t.is(response[1].amount, fixtures('4')[3].amount)
+  t.is(response[0].date, fixtures('3')[2].date)
+  t.is(response[1].date, fixtures('3')[1].date)
 
   await db.query(`DELETE FROM incomes WHERE id in (${ persistedIncomeIds.join(', ') })`)
 })
