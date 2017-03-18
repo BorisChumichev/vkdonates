@@ -18,7 +18,6 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
         "async-await"
     ],
     "rules": {

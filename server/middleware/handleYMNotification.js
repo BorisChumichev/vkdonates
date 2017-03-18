@@ -30,7 +30,6 @@ module.exports = app => (req, res, next) => {
           group_id: req.params.group_id,
           date: new Date(req.body.datetime)
         }).then(income => {
-          console.log('CREATED INCOME', income)
           res.status(200).end()
         })
 

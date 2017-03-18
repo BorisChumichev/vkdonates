@@ -9,6 +9,6 @@ const parseURL = require('url').parse
 module.exports = async function (req, res) {
   const { pathname } = parseURL(req.url)
     , { method } = req
-  
+
   await responce[`${method}:${pathname}`](req, res)
 }
